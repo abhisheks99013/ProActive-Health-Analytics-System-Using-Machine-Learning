@@ -8,7 +8,6 @@
 
 - [About](#about)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Models](#models)
 - [License](#license)
 
@@ -65,9 +64,9 @@ The diseases currently supported by this web app include:
 ## Usage for StreamLit
 
 1. Run the web app:
- ```bash
-    streamlit run app.py
-    ```
+   ```bash
+   streamlit run app.py
+   ```
 2. Open your web browser and go to `http://localhost:8080` to access the web app.
 
 3. Select the disease prediction page you want to use and provide the required input features.
