@@ -24,7 +24,7 @@ The diseases currently supported by this web app include:
 
 ## Web App
 
-- [Access the Web App](https://multiple-disease-prediction-using-ml.streamlit.app/) - Use the web app to predict multiple diseases.
+- [Access the Web App](https://medipredict-v1.streamlit.app/) - Use the web app to predict multiple diseases.
 
 ## Installation
 
@@ -48,7 +48,7 @@ pip install -r requirements.txt
 streamlit run app.py
 </pre>
 
-2. Open your web browser and go to `http://localhost:8501` to access the web app.
+2. Open your web browser and go to `http://localhost:8080` to access the web app.
 
 3. Select the disease prediction page you want to use and provide the required input features.
 
