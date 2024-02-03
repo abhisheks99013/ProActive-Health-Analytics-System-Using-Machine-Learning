@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# Multiple Disease Prediction Web App
+# Multiple Disease Prediction Web App & Docker Container
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -11,7 +10,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Models](#models)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## About
@@ -68,9 +66,6 @@ The machine learning models used in this web app are trained on publicly availab
 
 - Breast Cancer Model: This model predicts whether a breast mass is malignant or benign using features derived from breast cytology.
 
-## Contributing
-
-*Contributions are welcome! If you find any issues or have suggestions for improvement, please feel free to open an issue or submit a pull request.*
 
 ## License
 
