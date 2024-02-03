@@ -72,9 +72,3 @@ The machine learning models used in this web app are trained on publicly availab
 *This project is licensed under the [MIT License](LICENSE).*
 
 ---
-
-
-
-=======
-# MediPredict
->>>>>>> 6eef2bb384a33875d2ec9084202d654f8699fe66
