@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Multiple Disease Prediction Web App
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -79,3 +80,6 @@ The machine learning models used in this web app are trained on publicly availab
 
 
 
+=======
+# MediPredict
+>>>>>>> 6eef2bb384a33875d2ec9084202d654f8699fe66
