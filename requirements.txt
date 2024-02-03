@@ -1,0 +1,6 @@
+numpy==1.26.3
+pickle-mixin==1.0.2
+streamlit==1.31.0
+streamlit-option-menu==0.3.12
+scikit-learn==1.4.0
+protobuf==4.25.2
