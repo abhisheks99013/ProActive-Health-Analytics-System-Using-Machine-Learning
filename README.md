@@ -29,16 +29,14 @@ The diseases currently supported by this web app include:
 ## Installation
 
 1. Clone the repository:
-<pre>
-git clone https://github.com/AryanKaushal2002/MediPredict.git
-</pre>
-
+    ```bash
+    git clone https://github.com/AryanKaushal2002/MediPredict.git
+    ```
 
 2. Install the required dependencies:
-<pre>
-pip install -r requirements.txt
-</pre>
-
+    ```bash
+    pip install -r requirements.txt
+    ```
 3. Navigate to the project directory:
 
     ```bash
@@ -67,10 +65,9 @@ pip install -r requirements.txt
 ## Usage for StreamLit
 
 1. Run the web app:
-<pre>
-streamlit run app.py
-</pre>
-
+ ```bash
+    streamlit run app.py
+    ```
 2. Open your web browser and go to `http://localhost:8080` to access the web app.
 
 3. Select the disease prediction page you want to use and provide the required input features.
@@ -78,19 +75,19 @@ streamlit run app.py
 4. Click on the **Test Result** button to generate the prediction result.
 
 ## Usage with Docker
-6. Build the Docker image:
+1. Build the Docker image:
 
     ```bash
     docker build -t medipredict:v1.0 .
     ```
 
-7. Run the Docker container:
+2. Run the Docker container:
 
     ```bash
     docker run -p 80 medipredict:v1.0
     ```
 
-8. Access the application in your browser at [http://localhost:8080](http://localhost:8080).
+3. Access the application in your browser at [http://localhost:8080](http://localhost:8080).
 
 ## Models
 
