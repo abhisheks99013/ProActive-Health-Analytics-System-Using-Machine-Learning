@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-*A web application for predicting multiple diseases using machine learning models. This project includes prediction models for diabetes, Parkinson's disease, heart disease, and breast cancer.*
+*This project utilizes StreamLit and Docker to create an interactive web application for predicting various diseases. This project includes prediction models for diabetes, Parkinson's disease, heart disease, and breast cancer.*
 
 ## Table of Contents
 
@@ -39,9 +39,32 @@ git clone https://github.com/AryanKaushal2002/MediPredict.git
 pip install -r requirements.txt
 </pre>
 
+3. Navigate to the project directory:
 
+    ```bash
+    cd plant-disease-prediction
+    ```
 
-## Usage
+4. Create a virtual environment:
+
+    ```bash
+    python -m venv venv
+    ```
+5. Activate the virtual environment(You will have to create a virtual environment for the project):
+
+    - On Windows:
+
+        ```bash
+        venv\Scripts\activate
+        ```
+
+6. Install the required dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage for StreamLit
 
 1. Run the web app:
 <pre>
@@ -53,6 +76,21 @@ streamlit run app.py
 3. Select the disease prediction page you want to use and provide the required input features.
 
 4. Click on the **Test Result** button to generate the prediction result.
+
+## Usage with Docker
+6. Build the Docker image:
+
+    ```bash
+    docker build -t medipredict:v1.0 .
+    ```
+
+7. Run the Docker container:
+
+    ```bash
+    docker run -p 80 medipredict:v1.0
+    ```
+
+8. Access the application in your browser at [http://localhost:8080](http://localhost:8080).
 
 ## Models
 
