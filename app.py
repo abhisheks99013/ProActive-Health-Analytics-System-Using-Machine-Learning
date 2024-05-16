@@ -16,6 +16,15 @@ heart_model = pickle.load(open("./models/heart_disease_model.sav",'rb'))
 parkinsons_model = pickle.load(open("./models/parkinsons_model.sav",'rb'))
 breast_model = pickle.load(open("./models/breast_cancer_model.sav",'rb'))
 
+# Define a function to check if all elements in a list are numeric
+def are_numeric(values):
+    try:
+        # Attempt to convert each value to float
+        [float(val) for val in values]
+        return True
+    except ValueError:
+        return False
+
 # sidebar navigation
 with st.sidebar:
     
@@ -73,30 +82,22 @@ if (selected == 'Heart Disease Prediction'):
 
     with col1:
         thal = st.text_input('thal: 1 = normal; 2 = fixed defect; 3 = reversible defect')        
-        
-     
-     
-    # code for Prediction
+
+    # Code for Prediction
     heart_diagnosis = ''
-    
-    # creating a button for Prediction
-    
     if st.button('Heart Disease Test Result'):
-        if not all([age, sex, cp, trestbps, chol, fbs, restecg,thalach,exang,oldpeak,slope,ca,thal]):
-            st.warning("Please fill in all the fields.")
-        else:
-            heart_prediction = heart_model.predict([[age, sex, cp, trestbps, chol, fbs, restecg,thalach,exang,oldpeak,slope,ca,thal]])                          
-            
-            if (heart_prediction[0] == 1):
-              heart_diagnosis = 'The person has a heart disease'
-            else:
-              heart_diagnosis = 'The person does not have any heart disease'
+        # Convert input values to numeric type
+        numeric_inputs = [float(val) for val in [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]]
         
-    st.success(heart_diagnosis)  
-
-
-
-
+        if not are_numeric(numeric_inputs):
+            st.warning("Please fill in all the fields with numeric values.")
+        else:
+            heart_prediction = heart_model.predict([numeric_inputs])
+            if heart_prediction[0] == 1:
+                heart_diagnosis = 'The person has a heart disease.'
+            else:
+                heart_diagnosis = 'The person does not have any heart disease.'
+    st.success(heart_diagnosis)
 
 
 # Diabetes Prediction Page
@@ -132,27 +133,26 @@ if (selected == 'Diabetes Prediction'):
     with col2:
         Age = st.text_input('Age of the Person')
         
-    # code for prediction
+    # Code for prediction
     diab_diagnosis=''
-    
-    # create a button for prediction
-    
-    if st.button('Diabetes Test Result'):
-        if not all([Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]):
-            st.warning("Please fill in all the fields.")
-        else:
-            diab_prediction = diabetes_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
-            
-            if (diab_prediction[0] == 1):
-              diab_diagnosis = 'The person is diabetic'
-            else:
-              diab_diagnosis = 'The person is not diabetic'
+    with col3:
+        # Convert input values to numeric type
+        numeric_inputs = [float(val) for val in [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]
         
-    st.success(diab_diagnosis)  
-  
+        # Code for prediction
+        diab_diagnosis = ''
+        if st.button('Diabetes Test Result'):
+            if not are_numeric(numeric_inputs):
+                st.warning("Please fill in all the fields with numeric values.")
+            else:
+                diab_prediction = diabetes_model.predict([numeric_inputs])
+                if diab_prediction[0] == 1:
+                    diab_diagnosis = 'The person is diabetic.'
+                else:
+                    diab_diagnosis = 'The person is not diabetic.'
+    st.success(diab_diagnosis)
 
     
-
 
 # Parkinsons Prediction Page  
 if (selected == 'Parkinson\'s Prediction'):    
@@ -228,24 +228,21 @@ if (selected == 'Parkinson\'s Prediction'):
     with col2:
         PPE = st.text_input('PPE')
         
-    
-    
-    # code for Prediction
+    # Code for Prediction
     parkinsons_diagnosis = ''
-    
-    # creating a button for Prediction    
     if st.button("Parkinson's Test Result"):
-        if not all([fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ, DDP, Shimmer, Shimmer_dB, APQ3, APQ5, APQ, DDA, NHR, HNR, RPDE, DFA, spread1, spread2, D2, PPE]):
-            st.warning("Please fill in all the fields.")
-        else:
-            parkinsons_prediction = parkinsons_model.predict([[fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ,DDP,Shimmer,Shimmer_dB,APQ3,APQ5,APQ,DDA,NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE]])                          
-            
-            if (parkinsons_prediction[0] == 1):
-              parkinsons_diagnosis = "The person has Parkinson's disease"
-            else:
-              parkinsons_diagnosis = "The person does not have Parkinson's disease"
+        # Convert input values to numeric type
+        numeric_inputs = [float(val) for val in [fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ, DDP, Shimmer, Shimmer_dB, APQ3, APQ5, APQ, DDA, NHR, HNR, RPDE, DFA, spread1, spread2, D2, PPE]]
         
-    st.success(parkinsons_diagnosis)    
+        if not are_numeric(numeric_inputs):
+            st.warning("Please fill in all the fields with numeric values.")
+        else:
+            parkinsons_prediction = parkinsons_model.predict([numeric_inputs])
+            if parkinsons_prediction[0] == 1:
+                parkinsons_diagnosis = "The person has Parkinson's disease."
+            else:
+                parkinsons_diagnosis = "The person does not have Parkinson's disease."
+    st.success(parkinsons_diagnosis)
 
     
 
@@ -325,49 +322,30 @@ if selected == 'Breast Cancer Prediction':
         
         worst_concave_points = st.text_input('Worst Concave Points')
 
-        
     # Code for prediction
     cancer_diagnosis = ''
-    
+
+    # Convert input values to numeric type
+    numeric_inputs = [float(val) for val in [mean_radius, mean_texture, mean_perimeter, mean_area,
+                                             mean_smoothness, mean_compactness, mean_concavity,
+                                             mean_concave_points, mean_symmetry, mean_fractal_dimension,
+                                             radius_error, texture_error, perimeter_error, area_error,
+                                             smoothness_error, compactness_error, concavity_error,
+                                             concave_points_error, symmetry_error, fractal_dimension_error,
+                                             worst_radius, worst_texture, worst_perimeter, worst_area,
+                                             worst_smoothness, worst_compactness, worst_concavity,
+                                             worst_concave_points, worst_symmetry, worst_fractal_dimension]]
+
     # Creating a button for prediction
     if st.button('Breast Cancer Test Result'):
-        if not all([mean_radius, mean_texture, mean_perimeter, mean_area, mean_smoothness, mean_compactness,
-                    mean_concavity, mean_concave_points, mean_symmetry, mean_fractal_dimension, radius_error,
-                    texture_error, perimeter_error, area_error, smoothness_error, compactness_error, concavity_error,
-                    concave_points_error, symmetry_error, fractal_dimension_error, worst_radius, worst_texture,
-                    worst_perimeter, worst_area, worst_smoothness, worst_compactness, worst_concavity,
-                    worst_concave_points, worst_symmetry, worst_fractal_dimension]):
-            st.warning("Please fill in all the fields.")
+        if not all(numeric_inputs):
+            st.warning("Please fill in all the fields with numeric values.")
         else:
-            cancer_prediction = breast_model.predict([[mean_radius, mean_texture, mean_perimeter, mean_area,
-                                                       mean_smoothness, mean_compactness, mean_concavity,
-                                                       mean_concave_points, mean_symmetry, mean_fractal_dimension,
-                                                       radius_error, texture_error, perimeter_error, area_error,
-                                                       smoothness_error, compactness_error, concavity_error,
-                                                       concave_points_error, symmetry_error, fractal_dimension_error,
-                                                       worst_radius, worst_texture, worst_perimeter, worst_area,
-                                                       worst_smoothness, worst_compactness, worst_concavity,
-                                                       worst_concave_points, worst_symmetry, worst_fractal_dimension]])
+            cancer_prediction = breast_model.predict([numeric_inputs])
             
             if cancer_prediction[0] == 1:
                 cancer_diagnosis = 'The person is diagnosed with breast cancer.'
             else:
                 cancer_diagnosis = 'The person is not diagnosed with breast cancer.'
-        
+
     st.success(cancer_diagnosis)
-
-
-    
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
