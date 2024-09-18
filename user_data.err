@@ -1,0 +1,9 @@
+/COM,ANSYS RELEASE 10.0A1  UP20060105       12:32:40    09/13/2024
+
+ *** ERROR ***                           CP =       0.266   TIME= 12:32:47
+ Data file C:\Users\Dell\MediPredict\user_data.db has incorrect format,  
+ is missing READ/WRITE permission, or is empty for RESUME.               
+
+ *** WARNING ***                         CP =       0.266   TIME= 12:32:47
+ WHILE PROCESSING FILE BASED INPUT (/INPUT OR MACRO) AN ERROR HAS        
+ OCCURRED.  SHOULD INPUT PROCESSING BE SUSPENDED?                        
